@@ -6,13 +6,13 @@
 #    By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/15 14:13:40 by agoodwin          #+#    #+#              #
-#    Updated: 2020/12/15 15:34:34 by agoodwin         ###   ########.fr        #
+#    Updated: 2020/12/17 14:13:19 by agoodwin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_strlen.s ft_strcpy.s
+SRCS		=	ft_strlen.s ft_strcpy.s ft_strcmp.s
 
-#				\ ft_strcmp.s ft_strcpy.s ft_write.s ft_read.s ft_strdup.s
+#				\ ft_write.s ft_read.s ft_strdup.s
 
 OBJS		=	$(SRCS:.s=.o)
 
