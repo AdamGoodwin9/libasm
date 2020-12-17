@@ -6,11 +6,11 @@
 #    By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/15 14:13:40 by agoodwin          #+#    #+#              #
-#    Updated: 2020/12/15 14:56:08 by agoodwin         ###   ########.fr        #
+#    Updated: 2020/12/15 15:34:34 by agoodwin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_strlen.s
+SRCS		=	ft_strlen.s ft_strcpy.s
 
 #				\ ft_strcmp.s ft_strcpy.s ft_write.s ft_read.s ft_strdup.s
 
@@ -41,5 +41,7 @@ re:				fclean $(NAME)
 test:			$(NAME)
 				gcc $(FLAGS) -L. -lasm -o $(TEST) main.c
 				./$(TEST) < Makefile
+
+good:			test fclean
 
 .PHONY:			clean fclean re test
