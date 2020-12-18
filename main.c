@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2020/12/17 16:24:39 by agoodwin         ###   ########.fr       */
+/*   Updated: 2020/12/18 12:42:18 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *ft_strcpy(char *dest, const char *src);
 int ft_strcmp(const char *s1, const char *s2);
 ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
 ssize_t ft_read(int fildes, void *buf, size_t nbyte);
-char *ft_strdup(const char *s1);
+int ft_strdup(const char *s1);
 
 void strlenTest()
 {
@@ -69,7 +69,7 @@ void strdupTest()
 {
     char* s = "Hello World";
     
-    printf("Mine: %s\n", ft_strdup(s));
+    printf("Mine: %d\n", ft_strdup(s));
     printf("Them: %s\n", strdup(s));
 }
 
