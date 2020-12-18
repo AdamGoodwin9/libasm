@@ -6,13 +6,13 @@
 #    By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/15 14:13:40 by agoodwin          #+#    #+#              #
-#    Updated: 2020/12/17 14:13:19 by agoodwin         ###   ########.fr        #
+#    Updated: 2020/12/17 16:01:46 by agoodwin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_strlen.s ft_strcpy.s ft_strcmp.s
+SRCS		=	ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s
 
-#				\ ft_write.s ft_read.s ft_strdup.s
+#				\ ft_strdup.s
 
 OBJS		=	$(SRCS:.s=.o)
 
@@ -40,7 +40,7 @@ re:				fclean $(NAME)
 
 test:			$(NAME)
 				gcc $(FLAGS) -L. -lasm -o $(TEST) main.c
-				./$(TEST) < Makefile
+				./$(TEST)
 
 good:			test fclean
 

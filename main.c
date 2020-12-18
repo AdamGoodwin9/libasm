@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2020/12/17 15:36:22 by agoodwin         ###   ########.fr       */
+/*   Updated: 2020/12/17 16:03:16 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 int ft_strlen(char const *str);
 char* ft_strcpy(char *dest, const char *src);
 int ft_strcmp(const char *s1, const char *s2);
+ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
+ssize_t ft_read(int fildes, void *buf, size_t nbyte);
+
 
 void strlenTest()
 {
@@ -46,7 +49,23 @@ void strcmpTest()
     printf("Mine: %d\n", ft_strcmp(s1, s2));
 }
 
+void writeTest()
+{
+    write(STDOUT_FILENO, "Hello!\n", 7);
+    ft_write(STDOUT_FILENO, "Hello!\n", 7);
+}
+
+void readTest()
+{
+    char c;
+    while(ft_read(STDIN_FILENO, &c, 1) > 0)
+    {
+        if(c == '*') break;
+        printf("%c", c);
+    }
+}
+
 int main()
 {
-    strcmpTest();
+    readTest();
 }
