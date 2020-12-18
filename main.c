@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2020/12/17 16:20:07 by agoodwin         ###   ########.fr       */
+/*   Updated: 2020/12/17 16:24:39 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void strdupTest()
 
 int main()
 {
-    printf("BEGIN\n\n\n");
-    strcpyTest();
+    printf("BEGIN\n\n\n\n");
+    strdupTest();
     printf("\n\n\nEND\n");
 }
