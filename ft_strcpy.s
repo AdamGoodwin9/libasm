@@ -9,5 +9,6 @@ loop:
             movsb
             cmp BYTE [rsi], 0
             jne loop
+            movsb
 return:
             ret
