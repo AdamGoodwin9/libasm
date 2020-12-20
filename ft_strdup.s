@@ -9,15 +9,12 @@ _ft_strdup:
             call    _ft_strlen
             inc     rax
             push    rdi
-            xor     rdi,rdi
+            mov     rdi,rax
             call    _malloc
-            pop     rdi
+            pop     rsi
             cmp     rax, 0
-            je      fail
-            mov     rsi, rdi
+            je      return
             mov     rdi, rax
             call    _ft_strcpy
-            ret
-fail:
-            xor     rax,rax
+return:
             ret

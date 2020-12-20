@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2020/12/20 15:11:10 by agoodwin         ###   ########.fr       */
+/*   Updated: 2020/12/20 15:38:15 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ void readTest()
 
 void strdupTest()
 {
-    char* s = "Hello World";
+    char s[] = "lakdjfalkdjflakjdfladlfkjadlkfjakjdf";
     
-    printf("Mine: %s\n", ft_strdup(s));
     printf("Them: %s\n", strdup(s));
+    printf("Mine: %s\n", ft_strdup(s));
 }
 
 int main()
