@@ -11,6 +11,7 @@ _ft_strdup:
             push    rdi
             xor     rdi,rdi
             call    _malloc
+            pop     rdi
             cmp     rax, 0
             je      fail
             mov     rsi, rdi
