@@ -12,8 +12,9 @@ loop:
             dec     rsi
             dec     rdi
 finish:
-            xor     rdx, rdx
-            sub     dl, BYTE [rsi]
-            add     dl, BYTE [rdi]
-            movsx   rax, dl
+            xor     rax, rax
+            movzx   rdx, BYTE [rdi]
+            add     rax, rdx
+            movzx   rdx, BYTE [rsi]
+            sub     rax, rdx
             ret

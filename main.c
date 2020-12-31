@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2020/12/20 15:38:15 by agoodwin         ###   ########.fr       */
+/*   Updated: 2020/12/31 10:39:37 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void strcpyTest()
 
 void strcmpTest()
 {
-    char* s1 = "Hello World";
-    char* s2 = "Helga";
+    char* s1 = "\200";
+    char* s2 = "\0";
 
     printf("Them: %d\n", strcmp(s1, s2));
     printf("Mine: %d\n", ft_strcmp(s1, s2));
@@ -76,6 +76,6 @@ void strdupTest()
 int main()
 {
     printf("BEGIN\n\n\n\n");
-    strdupTest();
+    strcmpTest();
     printf("\n\n\nEND\n");
 }
