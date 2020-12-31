@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2020/12/31 10:39:37 by agoodwin         ###   ########.fr       */
+/*   Updated: 2020/12/31 15:50:52 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <fcntl.h>
+//#include <errno.h>
 
 int ft_strlen(char const *str);
 char *ft_strcpy(char *dest, const char *src);
@@ -21,6 +23,8 @@ int ft_strcmp(const char *s1, const char *s2);
 ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
 ssize_t ft_read(int fildes, void *buf, size_t nbyte);
 char *ft_strdup(const char *s1);
+
+extern int errno;
 
 void strlenTest()
 {
@@ -42,8 +46,8 @@ void strcpyTest()
 
 void strcmpTest()
 {
-    char* s1 = "\200";
-    char* s2 = "\0";
+    char* s2 = "\xff a";
+    char* s1 = "\0";
 
     printf("Them: %d\n", strcmp(s1, s2));
     printf("Mine: %d\n", ft_strcmp(s1, s2));
@@ -51,8 +55,17 @@ void strcmpTest()
 
 void writeTest()
 {
-    write(STDOUT_FILENO, "Hello!\n", 7);
-    ft_write(STDOUT_FILENO, "Hello!\n", 7);
+    const int fd = -1;//STDOUT_FILENO;
+    const char* buf = "Hello!";
+    int nbyte = strlen(buf) - 11;
+
+    printf("%d\n", errno);
+
+    printf("- (%zd, ", ft_write(fd, buf, nbyte));
+    printf("%d)\n", errno);
+
+    printf("- (%zd, ", write(fd, buf, nbyte));
+    printf("%d)\n", errno);
 }
 
 void readTest()
@@ -76,6 +89,6 @@ void strdupTest()
 int main()
 {
     printf("BEGIN\n\n\n\n");
-    strcmpTest();
+    writeTest();
     printf("\n\n\nEND\n");
 }
