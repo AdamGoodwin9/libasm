@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2020/12/31 15:50:52 by agoodwin         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:05:20 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
-//#include <errno.h>
+#include <errno.h>
 
 int ft_strlen(char const *str);
 char *ft_strcpy(char *dest, const char *src);
@@ -53,19 +53,20 @@ void strcmpTest()
     printf("Mine: %d\n", ft_strcmp(s1, s2));
 }
 
-void writeTest()
+void writeTester(int fd, char* buf, int nbyte)
 {
-    const int fd = -1;//STDOUT_FILENO;
-    const char* buf = "Hello!";
-    int nbyte = strlen(buf) - 11;
-
-    printf("%d\n", errno);
-
     printf("- (%zd, ", ft_write(fd, buf, nbyte));
     printf("%d)\n", errno);
 
     printf("- (%zd, ", write(fd, buf, nbyte));
     printf("%d)\n", errno);
+}
+
+void writeTest()
+{
+    char* test = (char*)-1; //illegal address gives errorno 14
+    //need to find assembly syscall to test address
+    writeTester(STDOUT_FILENO, test, 6);
 }
 
 void readTest()
