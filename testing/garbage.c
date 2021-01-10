@@ -1,7 +1,6 @@
-#include <errno.h>
-//extern int errno;
+#include <unistd.h>
 
 int main()
 {
-    errno = 5;
+    write(1, "ABC", 3);
 }

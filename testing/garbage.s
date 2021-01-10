@@ -10,13 +10,23 @@ _main:                                  ## @main
 	.cfi_offset %rbp, -16
 	movq	%rsp, %rbp
 	.cfi_def_cfa_register %rbp
-	callq	___error
-	xorl	%ecx, %ecx
-	movl	$5, (%rax)
-	movl	%ecx, %eax
+	subq	$16, %rsp
+	movl	$3, %eax
+	movl	%eax, %edx
+	movl	$1, %edi
+	leaq	L_.str(%rip), %rsi
+	callq	_write
+	xorl	%edi, %edi
+	movq	%rax, -8(%rbp)          ## 8-byte Spill
+	movl	%edi, %eax
+	addq	$16, %rsp
 	popq	%rbp
 	retq
 	.cfi_endproc
                                         ## -- End function
+	.section	__TEXT,__cstring,cstring_literals
+L_.str:                                 ## @.str
+	.asciz	"ABC"
+
 
 .subsections_via_symbols

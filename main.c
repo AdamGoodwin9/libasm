@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2021/01/08 17:05:20 by agoodwin         ###   ########.fr       */
+/*   Updated: 2021/01/10 12:35:57 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ void writeTester(int fd, char* buf, int nbyte)
 
 void writeTest()
 {
-    char* test = (char*)-1; //illegal address gives errorno 14
-    //need to find assembly syscall to test address
+    char* test = "helloooooooooooooooo";
     writeTester(STDOUT_FILENO, test, 6);
 }
 
