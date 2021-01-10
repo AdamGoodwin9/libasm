@@ -6,7 +6,7 @@
 /*   By: agoodwin <agoodwin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/15 14:24:27 by agoodwin          #+#    #+#             */
-/*   Updated: 2021/01/10 12:48:33 by agoodwin         ###   ########.fr       */
+/*   Updated: 2021/01/10 13:23:42 by agoodwin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ void strcpyTest()
 
 void strcmpTest()
 {
-    char* s2 = "\xff a";
-    char* s1 = "\0";
+    char* s1 = "\14";
+    char* s2 = "";
 
-    printf("Them: %d\n", strcmp(s1, s2));
     printf("Mine: %d\n", ft_strcmp(s1, s2));
+    printf("Them: %d\n", strcmp(s1, s2));
 }
 
 void writeTester(int fd, char* buf, int nbyte)
@@ -65,7 +65,7 @@ void writeTester(int fd, char* buf, int nbyte)
 void writeTest()
 {
     char* test = "helloooooooooooooooo";
-    writeTester(STDOUT_FILENO, test, 6);
+    writeTester(STDOUT_FILENO, test, -1);
 }
 
 void readTest()
@@ -89,6 +89,6 @@ void strdupTest()
 int main()
 {
     printf("BEGIN\n\n\n\n");
-    readTest();
+    strcmpTest();
     printf("\n\n\nEND\n");
 }
