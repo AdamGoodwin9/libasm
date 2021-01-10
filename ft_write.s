@@ -1,8 +1,8 @@
-    global  _ft_write
+    section	.text
+	global  _ft_write
     extern  ___error
 
 %define SYSCALL_WRITE 0x2000004
-%define SYSCALL_FSTAT 0x20000bd
 
 ; int ft_write(int rdi, const void *rsi, size_t rdx);
 _ft_write:
