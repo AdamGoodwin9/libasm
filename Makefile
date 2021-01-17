@@ -31,6 +31,7 @@ NA			=	nasm
 NA_FLAGS	=	-f elf64
 NA_FLAGS_MAC =	-f macho64
 FLAGS 		=	-Wall -Werror -Wextra -no-pie
+FLAGS_MAC	=	-Wall -Werror -Wextra
 NAME		=	libasm.a
 TEST		=	test.out
 
@@ -60,6 +61,12 @@ test:			$(NAME)
 			gcc main.c $(FLAGS) -L. -lasm -o $(TEST)
 			./$(TEST)
 
+test_mac:		$(NAME)
+			gcc main.c $(FLAGS_MAC) -L. -lasm -o $(TEST)
+			./$(TEST)
+
 good:			test fclean
+
+good_mac:		test_mac fclean
 
 .PHONY:			clean fclean re test
