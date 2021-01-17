@@ -10,26 +10,46 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s ft_strdup.s
+SRCS		=	src/ft_strlen.s \
+				src/ft_strcpy.s \
+				src/ft_strcmp.s \
+				src/ft_write.s \
+				src/ft_read.s \
+				src/ft_strdup.s
+
+MAC_SRCS	=	mac/ft_strlen.s \
+				mac/ft_strcpy.s \
+				mac/ft_strcmp.s \
+				mac/ft_write.s \
+				mac/ft_read.s \
+				mac/ft_strdup.s
 
 OBJS		=	$(SRCS:.s=.o)
+MAC_OBJS	=	$(MAC_SRCS:.s=.o)
 
-NA		=	nasm
+NA			=	nasm
 NA_FLAGS	=	-f elf64
+NA_FLAGS_MAC =	-f macho64
 FLAGS 		=	-Wall -Werror -Wextra -no-pie
 NAME		=	libasm.a
-TEST		=	test
+TEST		=	test.out
 
-%.o:			%.s
-			$(NA) $(NA_FLAGS) $<
+src/%.o:		src/%.s
+				$(NA) $(NA_FLAGS) $<
+
+mac/%.o:		mac/%.s
+				$(NA) $(NA_FLAGS_MAC) $<
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
 			ar rcs $(NAME) $(OBJS)
 
+mac:			$(MAC_OBJS)
+			ar rcs $(NAME) $(MAC_OBJS)
+
 clean:
-			rm -rf $(OBJS)
+			rm -rf $(OBJS) $(MAC_OBJS)
 
 fclean:			clean
 			rm -rf $(NAME) $(TEST)

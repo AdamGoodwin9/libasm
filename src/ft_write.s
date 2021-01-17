@@ -9,7 +9,7 @@ ft_write:
     push    r9
 	mov     rax, SYSCALL_WRITE
 	syscall						; if fails, CF = 1, else CF = 0
-	cmp rax, 0
+	cmp     rax, 0
 	jl		.error				; if (CF == 1)
     pop     r9
     ret

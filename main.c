@@ -59,7 +59,7 @@ void writeTester(int fd, char* buf, int nbyte)
     printf("%d)\n", errno);
 
     printf("- (%zd, ", write(fd, buf, nbyte));
-    printf("%d)\n", errno);
+    printf("%d)\n\n", errno);
 }
 
 void writeTest()
@@ -95,6 +95,6 @@ void strdupTest()
 int main()
 {
     printf("BEGIN\n\n\n\n");
-    readTest();
+    writeTest();
     printf("\n\n\nEND\n");
 }
