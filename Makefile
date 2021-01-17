@@ -50,12 +50,20 @@ mac:			$(MAC_OBJS)
 			ar rcs $(NAME) $(MAC_OBJS)
 
 clean:
-			rm -rf $(OBJS) $(MAC_OBJS)
+			rm -rf $(OBJS)
+
+clean_mac:
+			rm -rf $(MAC_OBJS)
 
 fclean:			clean
 			rm -rf $(NAME) $(TEST)
 
+fclean_mac:		clean_mac
+			rm -rf $(NAME) $(TEST)
+
 re:			fclean $(NAME)
+
+re_mac:		fclean mac
 
 test:			$(NAME)
 			gcc main.c $(FLAGS) -L. -lasm -o $(TEST)
@@ -67,6 +75,6 @@ test_mac:		mac
 
 good:			test fclean
 
-good_mac:		test_mac fclean
+good_mac:		test_mac fclean_mac
 
 .PHONY:			clean fclean re test
