@@ -61,7 +61,7 @@ test:			$(NAME)
 			gcc main.c $(FLAGS) -L. -lasm -o $(TEST)
 			./$(TEST)
 
-test_mac:		$(NAME)
+test_mac:		mac
 			gcc main.c $(FLAGS_MAC) -L. -lasm -o $(TEST)
 			./$(TEST)
 
