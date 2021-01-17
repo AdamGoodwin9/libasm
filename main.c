@@ -17,84 +17,89 @@
 #include <fcntl.h>
 #include <errno.h>
 
-int ft_strlen(char const *str);
-char *ft_strcpy(char *dest, const char *src);
-int ft_strcmp(const char *s1, const char *s2);
-ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
-ssize_t ft_read(int fildes, void *buf, size_t nbyte);
-char *ft_strdup(const char *s1);
+int		ft_strlen(char const *str);
+char	*ft_strcpy(char *dest, const char *src);
+int		ft_strcmp(const char *s1, const char *s2);
+ssize_t	ft_write(int fildes, const void *buf, size_t nbyte);
+ssize_t	ft_read(int fildes, void *buf, size_t nbyte);
+char	*ft_strdup(const char *s1);
 
-extern int errno;
-
-void strlenTest()
+void	strlen_test(void)
 {
-    char* s = "Hello World";
+	char *s;
 
-    printf("Mine: %d\n", ft_strlen(s));
-    printf("Them: %d\n", (int)strlen(s));
+	s = "Hello World";
+	printf("Mine: %d\n", ft_strlen(s));
+	printf("Them: %d\n", (int)strlen(s));
 }
 
-void strcpyTest()
+void	strcpy_test(void)
 {
-    char* s = "Hello World";
-    char dest1[20];
-    char dest2[20];
-    
-    printf("Mine: %s, dest = %s\n", ft_strcpy(dest1, s), dest1);
-    printf("Them: %s, dest = %s\n", strcpy(dest2, s), dest2);
+	char *s;
+	char dest1[20];
+	char dest2[20];
+
+	s = "Hello World";
+	printf("Mine: %s, dest = %s\n", ft_strcpy(dest1, s), dest1);
+	printf("Them: %s, dest = %s\n", strcpy(dest2, s), dest2);
 }
 
-void strcmpTest()
+void	strcmp_test(void)
 {
-    char* s1 = "\14";
-    char* s2 = "";
+	char *s1;
+	char *s2;
 
-    printf("Mine: %d\n", ft_strcmp(s1, s2));
-    printf("Them: %d\n", strcmp(s1, s2));
+	s1 = "\14";
+	s2 = "";
+	printf("Mine: %d\n", ft_strcmp(s1, s2));
+	printf("Them: %d\n", strcmp(s1, s2));
 }
 
-void writeTester(int fd, char* buf, int nbyte)
+void	write_tester(int fd, char *buf, int nbyte)
 {
-    printf("- (%zd, ", ft_write(fd, buf, nbyte));
-    printf("%d)\n", errno);
-
-    printf("- (%zd, ", write(fd, buf, nbyte));
-    printf("%d)\n\n", errno);
+	printf("- (%zd, ", ft_write(fd, buf, nbyte));
+	printf("%d)\n", errno);
+	printf("- (%zd, ", write(fd, buf, nbyte));
+	printf("%d)\n\n", errno);
 }
 
-void writeTest()
+void	write_test(void)
 {
-    char* test = "helloooooooooooooooo";
-    
-    writeTester(1, test, 6);
-    writeTester(1, test - 100000, 6);
-    writeTester(-5, test, 6);
-    writeTester(30, test, 6);
-    writeTester(1, test, -5);
-    writeTester(1, NULL, 6);
+	char *test;
+
+	test = "hellooooooo";
+	write_tester(1, test, 6);
+	write_tester(1, test - 100000, 6);
+	write_tester(-5, test, 6);
+	write_tester(30, test, 6);
+	write_tester(1, test, -5);
+	write_tester(1, NULL, 6);
 }
 
-void readTest()
+void	read_test(void)
 {
-    char c;
-    while(ft_read(STDIN_FILENO, &c, 1) > 0)
-    {
-        if(c == '*') break;
-        printf("%c", c);
-    }
+	char c;
+
+	while (ft_read(STDIN_FILENO, &c, 1) > 0)
+	{
+		if (c == '*')
+			break ;
+		printf("%c", c);
+	}
 }
 
-void strdupTest()
+void	strdup_test(void)
 {
-    char s[] = "lakdjfalkdjflakjdfladlfkjadlkfjakjdf";
-    
-    printf("Them: %s\n", strdup(s));
-    printf("Mine: %s\n", ft_strdup(s));
+	char *s;
+
+	s = "lakdjfalkdjflakjdfladlfkjadlkfjakjdf";
+	printf("Them: %s\n", strdup(s));
+	printf("Mine: %s\n", ft_strdup(s));
 }
 
-int main()
+int		main(void)
 {
-    printf("BEGIN\n\n\n\n");
-    writeTest();
-    printf("\n\n\nEND\n");
+	printf("BEGIN\n\n\n\n");
+	strdup_test();
+	printf("\n\n\nEND\n");
 }
