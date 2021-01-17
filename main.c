@@ -65,7 +65,13 @@ void writeTester(int fd, char* buf, int nbyte)
 void writeTest()
 {
     char* test = "helloooooooooooooooo";
-    writeTester(STDOUT_FILENO, test, -1);
+    
+    writeTester(1, test, 6);
+    writeTester(1, test - 100000, 6);
+    writeTester(-5, test, 6);
+    writeTester(30, test, 6);
+    writeTester(1, test, -5);
+    writeTester(1, NULL, 6);
 }
 
 void readTest()
@@ -89,6 +95,6 @@ void strdupTest()
 int main()
 {
     printf("BEGIN\n\n\n\n");
-    strcmpTest();
+    readTest();
     printf("\n\n\nEND\n");
 }
